@@ -1,3 +1,5 @@
+import os
+
 from django.test import TestCase
 
 # Create your tests here.
@@ -26,6 +28,14 @@ def work1(num):
         time.sleep(random.randint(0,5))
         print("执行完毕 "+str(num))
 
+
+def work2(num):
+    print("正在执行work2（）" + str(num))
+    print(time.time())
+    os.system('python manage.py test_command')
+    print("正在执行work2 " + str(num))
+
+
 if __name__ == '__main__':
     # 创建gevent的对象    gevent.spawn（函数名,参数1，参数2.。。。）
     while True:
@@ -35,6 +45,8 @@ if __name__ == '__main__':
         for _ in range(0, 10):
             g1= gevent.spawn(work1,_)
             g_list.append(g1)
+        g1 = gevent.spawn(work2, 11)
+        g_list.append(g1)
         gevent.joinall(g_list)
         print('耗时')
         print(time.time()-start_time)
