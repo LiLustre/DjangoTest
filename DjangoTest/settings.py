@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'DjangoTest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'DjangoTest',
+        'NAME': 'my_test',
         'USER': 'postgres',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',

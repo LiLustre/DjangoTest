@@ -1,27 +1,29 @@
-import json
-import random
+import threading
 import time
-import requests
+from django.contrib.postgres.fields.jsonb import KeyTextTransform
 from django.core.management.base import BaseCommand
-from google.protobuf.json_format import MessageToJson
-from requests_toolbelt import MultipartEncoder
+from django.db import transaction
+from django.db.models import FloatField
+from django.db.models.functions import Cast
 
-from push_image.management import msg_pb2
-from push_image.models import Article, Tag
+from push_image.models import Tag
 
 
 class Command(BaseCommand):
+
+
+
     def handle(self, *args, **options):
-        # Article.objects.create(**{
-        #     'name':'111233'
-        # })
-        # Tag.objects.create(**{
-        #     'name': 'ttttt2'
-        # })
-        art =Article.objects.get(name='111233')
-        art.tags.add(
-            Tag.objects.get(name='ttttt2')
-        )
-                #time.sleep(1)
+        index =1
+
+        tag1 = Tag()
+        tag1.name='aaaa'
+        tag =Tag()
+        #tag.id= 3
+        tag.name='注：序号、分类与车位编号为必填项，注：序号、分类与车位编号为必填项，分类与车位编号为必填项分类与车位编号为必填项分类与车位编号为必填项分类与车位编号为必填项分类与车位编号为必填项注：序号、分类与车位编号为必填项，注：序号、分类与车位编号为必填项，注：序号、分类与车位编号为必填项，注：序号、分类与车位编号为必填项，'
+        #Tag.objects.bulk_update([tag],['name'])
+        Tag.objects.bulk_create([tag1,tag],batch_size=1)
+
+
 
 

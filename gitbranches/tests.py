@@ -1,3 +1,6 @@
-from django.test import TestCase
+from uuid import uuid4
 
-# Create your tests here.
+from requests_toolbelt import MultipartEncoder
+
+m = MultipartEncoder(fields={})
+print(uuid4().hex)

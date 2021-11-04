@@ -1,12 +1,10 @@
 import json
-import random
 import time
 import requests
 from django.core.management.base import BaseCommand
 from google.protobuf.json_format import MessageToJson
-from requests_toolbelt import MultipartEncoder
 
-from push_image.management import msg_pb2
+from push_image import msg_pb2
 
 
 class Command(BaseCommand):
@@ -14,9 +12,10 @@ class Command(BaseCommand):
         while True:
             try:
                 resp = requests.get(
-                    url='https://camera-monitor-deployment-server-d.parkone.cn/v3/dev/cmd',
+                   # url='http://192.168.6.75:8000/v3/dev/cmd',
+                    url='http://camera-monitor-deployment-server.parkone.cn/v3/dev/cmd',
                     params={
-                        'dev_id':'888888888888881',
+                        'dev_id':'862167058979570',
                         'last_modified':1
                     },
                     timeout=10,

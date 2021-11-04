@@ -35,7 +35,6 @@ def work2(num):
     os.system('python manage.py test_command')
     print("正在执行work2 " + str(num))
 
-
 if __name__ == '__main__':
     # 创建gevent的对象    gevent.spawn（函数名,参数1，参数2.。。。）
     while True:
@@ -50,8 +49,6 @@ if __name__ == '__main__':
         gevent.joinall(g_list)
         print('耗时')
         print(time.time()-start_time)
-
-
     # while True:
     #     print('开始-----------------------')
     #     for _ in range(0,10):
